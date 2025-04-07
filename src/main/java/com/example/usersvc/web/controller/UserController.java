@@ -80,15 +80,11 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
 
-        User user = userService.delete(id);
+        userService.delete(id);
 
-        UserResponse response = DtoMapper.fromUser(user);
-
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body("Successfully deleted user with Id: [%s]".formatted(response.getId()));
+        return ResponseEntity.ok().build();
     }
 
 }

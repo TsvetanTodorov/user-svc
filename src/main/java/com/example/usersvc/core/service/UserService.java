@@ -86,13 +86,11 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User delete(UUID id) {
+    public void delete(UUID id) {
 
         User user = getUserById(id);
 
         userRepository.delete(user);
-
-        return user;
     }
 
 
