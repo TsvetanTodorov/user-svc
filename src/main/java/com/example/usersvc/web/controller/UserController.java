@@ -2,10 +2,10 @@ package com.example.usersvc.web.controller;
 
 import com.example.usersvc.core.service.UserService;
 import com.example.usersvc.db.entity.User;
-import com.example.usersvc.web.dto.UserRequest;
+import com.example.usersvc.web.dto.UserEditRequest;
+import com.example.usersvc.web.dto.UserRegisterRequest;
 import com.example.usersvc.web.dto.UserResponse;
 import com.example.usersvc.web.mapper.DtoMapper;
-import jakarta.annotation.Nullable;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,7 +27,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRequest request) {
+    public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRegisterRequest request) {
 
         User user = userService.create(request);
 
@@ -51,7 +51,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UserResponse>> getUsers(@RequestParam @Nullable String term) {
+    public ResponseEntity<List<UserResponse>> getUsers(@RequestParam(required = false) String term) {
 
         List<User> users = userService.getAll(term);
 
@@ -66,7 +66,7 @@ public class UserController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<UserResponse> updateUser(@PathVariable UUID id,
-                                                   @RequestBody UserRequest request) {
+                                                   @RequestBody @Valid UserEditRequest request) {
 
         User user = userService.update(id, request);
 
@@ -75,8 +75,6 @@ public class UserController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(response);
-
-
     }
 
     @DeleteMapping("/{id}")
@@ -86,5 +84,4 @@ public class UserController {
 
         return ResponseEntity.ok().build();
     }
-
 }

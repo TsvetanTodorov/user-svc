@@ -11,22 +11,18 @@ import java.time.LocalDate;
 
 @Data
 @Builder
-public class UserRequest {
+public class UserRegisterRequest {
 
-    @NotNull
     @NotBlank
     private String firstName;
 
-    @NotNull
     @NotBlank
     private String lastName;
 
     @Email
-    @NotNull
     @NotBlank
     private String email;
 
-    @NotNull
     @NotBlank
     @Size(max = 10, message = "Phone number cannot be longer than 10 digits.")
     private String phoneNumber;
