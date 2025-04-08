@@ -43,18 +43,18 @@ public class GlobalExceptionHandler {
         return time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<ErrorResponse> handleGenericException(Exception ex) {
-//
-//        ErrorResponse errorResponse = ErrorResponse.builder()
-//                .message("Internal Error")
-//                .time(formatTime(LocalDateTime.now()))
-//                .build();
-//
-//        return ResponseEntity
-//                .status(HttpStatus.INTERNAL_SERVER_ERROR)
-//                .body(errorResponse);
-//    }
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleGenericException(Exception ex) {
+
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .message("Internal Error")
+                .time(formatTime(LocalDateTime.now()))
+                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(errorResponse);
+    }
 
     @ExceptionHandler(UserUpdateException.class)
     public ResponseEntity<ErrorResponse> handleUserUpdateException(Exception ex) {
