@@ -1,5 +1,6 @@
 package com.example.usersvc.web.controller;
 
+import com.example.usersvc.constant.OperationDescriptions;
 import com.example.usersvc.core.service.UserService;
 import com.example.usersvc.db.entity.User;
 import com.example.usersvc.web.dto.UserEditRequest;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+import static com.example.usersvc.constant.OperationDescriptions.*;
+
 @RestController
 @RequestMapping("/api/v1/users")
 @Tag(name = "User Management", description = "Operations related to users")
@@ -30,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping
-    @Operation(summary = "Create a new user", description = "Creates a new user with the provided registration details and returns the created user.")
+    @Operation(summary = OperationDescriptions.CREATE_USER, description = CREATE_USER_DESCRIPTION)
     public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRegisterRequest request) {
 
         User user = userService.create(request);
@@ -43,7 +46,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Retrieve user by ID", description = "Fetches the user details for the specified user ID.")
+    @Operation(summary = OperationDescriptions.GET_USER, description = GET_USER_DESCRIPTION)
     public ResponseEntity<UserResponse> getUser(@PathVariable UUID id) {
 
         User user = userService.getById(id);
@@ -56,7 +59,7 @@ public class UserController {
     }
 
     @GetMapping
-    @Operation(summary = "Retrieve a list of users", description = "Fetches a list of users, optionally filtered by the provided search term.")
+    @Operation(summary = OperationDescriptions.GET_USERS, description = GET_USERS_DESCRIPTION)
     public ResponseEntity<List<UserResponse>> getUsers(@RequestParam(required = false) String term) {
 
         List<User> users = userService.getAll(term);
@@ -71,7 +74,7 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    @Operation(summary = "Update user details", description = "Updates the details of an existing user identified by the specified user ID.")
+    @Operation(summary = OperationDescriptions.UPDATE_USER, description = UPDATE_USER_DESCRIPTION)
     public ResponseEntity<UserResponse> updateUser(@PathVariable UUID id,
                                                    @RequestBody @Valid UserEditRequest request) {
 
@@ -85,7 +88,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Delete a user", description = "Deletes the user identified by the specified user ID.")
+    @Operation(summary = OperationDescriptions.DELETE_USER, description = DELETE_USER_DESCRIPTION)
     public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
 
         userService.delete(id);
