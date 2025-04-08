@@ -1,12 +1,14 @@
 package com.example.usersvc.core.service;
 
 import com.example.usersvc.db.entity.User;
+import com.example.usersvc.db.enums.Role;
 import com.example.usersvc.db.repository.UserRepository;
 import com.example.usersvc.exception.NoSuchUserException;
 import com.example.usersvc.exception.UserAlreadyExistsException;
 import com.example.usersvc.web.dto.UserEditRequest;
-import com.example.usersvc.web.dto.UserRegisterRequest;
+import com.example.usersvc.web.dto.UserCreateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,13 +18,16 @@ import java.util.*;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    public User create(UserRegisterRequest request) {
+    public User create(UserCreateRequest request) {
 
         Optional<User> optionalUser = userRepository.findByEmailOrPhoneNumber(request.getEmail(),
                 request.getPhoneNumber());
@@ -76,7 +81,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    private User initializeUser(UserRegisterRequest request) {
+    private User initializeUser(UserCreateRequest request) {
 
         return User.builder()
                 .firstName(request.getFirstName())
@@ -84,6 +89,8 @@ public class UserService {
                 .email(request.getEmail())
                 .phoneNumber(request.getPhoneNumber())
                 .dateOfBirth(request.getDateOfBirth())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .role(request.getRole() != null ? request.getRole() : Role.ROLE_USER)
                 .createdOn(LocalDateTime.now())
                 .updatedOn(LocalDateTime.now())
                 .build();

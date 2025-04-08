@@ -4,7 +4,7 @@ import com.example.usersvc.constant.OperationDescriptions;
 import com.example.usersvc.core.service.UserService;
 import com.example.usersvc.db.entity.User;
 import com.example.usersvc.web.dto.UserEditRequest;
-import com.example.usersvc.web.dto.UserRegisterRequest;
+import com.example.usersvc.web.dto.UserCreateRequest;
 import com.example.usersvc.web.dto.UserResponse;
 import com.example.usersvc.web.mapper.DtoMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,7 +34,7 @@ public class UserController {
 
     @PostMapping
     @Operation(summary = OperationDescriptions.CREATE_USER, description = CREATE_USER_DESCRIPTION)
-    public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRegisterRequest request) {
+    public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserCreateRequest request) {
 
         User user = userService.create(request);
 

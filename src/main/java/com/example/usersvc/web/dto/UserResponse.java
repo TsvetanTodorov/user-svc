@@ -1,5 +1,6 @@
 package com.example.usersvc.web.dto;
 
+import com.example.usersvc.db.enums.Role;
 import lombok.Builder;
 import lombok.Data;
 
@@ -21,5 +22,7 @@ public class UserResponse {
     private String phoneNumber;
 
     private LocalDate dateOfBirth;
+
+    private Role role;
 
 }

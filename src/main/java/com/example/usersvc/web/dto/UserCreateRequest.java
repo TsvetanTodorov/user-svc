@@ -1,5 +1,6 @@
 package com.example.usersvc.web.dto;
 
+import com.example.usersvc.db.enums.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 
 @Data
 @Builder
-public class UserRegisterRequest {
+public class UserCreateRequest {
 
     @NotBlank
     private String firstName;
@@ -29,5 +30,10 @@ public class UserRegisterRequest {
 
     @NotNull
     private LocalDate dateOfBirth;
+
+    @NotBlank
+    private String password;
+
+    private Role role;
 
 }
