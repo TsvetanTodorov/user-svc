@@ -32,7 +32,4 @@ public class UserCreateRequest {
 
     @NotBlank
     private String password;
-//
-//    private Role role;
-
 }

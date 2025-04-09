@@ -1,6 +1,5 @@
 package com.example.usersvc.web.controller;
 
-import com.example.usersvc.constant.OperationDescriptions;
 import com.example.usersvc.core.service.UserService;
 import com.example.usersvc.db.entity.User;
 import com.example.usersvc.web.dto.UserEditRequest;
@@ -32,9 +31,8 @@ public class UserController {
         this.userService = userService;
     }
 
-
     @PostMapping
-    @Operation(summary = OperationDescriptions.CREATE_USER, description = CREATE_USER_DESCRIPTION)
+    @Operation(summary = CREATE_USER, description = CREATE_USER_DESCRIPTION)
     public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserCreateRequest request) {
 
         User user = userService.create(request);
@@ -47,7 +45,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = OperationDescriptions.GET_USER, description = GET_USER_DESCRIPTION)
+    @Operation(summary = GET_USER, description = GET_USER_DESCRIPTION)
     public ResponseEntity<UserResponse> getUser(@PathVariable UUID id) {
 
         User user = userService.getById(id);
@@ -60,7 +58,7 @@ public class UserController {
     }
 
     @GetMapping
-    @Operation(summary = OperationDescriptions.GET_USERS, description = GET_USERS_DESCRIPTION)
+    @Operation(summary = GET_USERS, description = GET_USERS_DESCRIPTION)
     public ResponseEntity<List<UserResponse>> getUsers(@RequestParam(required = false) String term) {
 
         List<User> users = userService.getAll(term);
@@ -75,7 +73,7 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    @Operation(summary = OperationDescriptions.UPDATE_USER, description = UPDATE_USER_DESCRIPTION)
+    @Operation(summary = UPDATE_USER, description = UPDATE_USER_DESCRIPTION)
     public ResponseEntity<UserResponse> updateUser(@PathVariable UUID id,
                                                    @RequestBody @Valid UserEditRequest request) {
 
@@ -89,7 +87,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = OperationDescriptions.DELETE_USER, description = DELETE_USER_DESCRIPTION)
+    @Operation(summary = DELETE_USER, description = DELETE_USER_DESCRIPTION)
     public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
 
         userService.delete(id);

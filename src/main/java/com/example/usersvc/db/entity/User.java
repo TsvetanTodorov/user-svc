@@ -1,6 +1,5 @@
 package com.example.usersvc.db.entity;
 
-import com.example.usersvc.db.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -39,10 +38,6 @@ public class User {
 
     @Column(nullable = false)
     private String password;
-
-//    @Column(nullable = false)
-//    @Enumerated(EnumType.STRING)
-//    private Role role;
 
     @CreationTimestamp
     @Column(nullable = false)

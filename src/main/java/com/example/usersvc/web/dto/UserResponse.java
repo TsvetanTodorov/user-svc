@@ -1,9 +1,7 @@
 package com.example.usersvc.web.dto;
 
-import com.example.usersvc.db.enums.Role;
 import lombok.Builder;
 import lombok.Data;
-
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -22,7 +20,4 @@ public class UserResponse {
     private String phoneNumber;
 
     private LocalDate dateOfBirth;
-
-//    private Role role;
-
 }
