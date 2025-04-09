@@ -22,7 +22,7 @@ import static com.example.usersvc.constant.OperationDescriptions.*;
 
 @RestController
 @RequestMapping("/api/v1/users")
-@Tag(name = "User Management", description = "Operations related to users")
+@Tag(name = USER_MANAGEMENT, description = USER_MANAGEMENT_DESCRIPTION)
 public class UserController {
 
     private final UserService userService;
@@ -31,6 +31,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
 
     @PostMapping
     @Operation(summary = OperationDescriptions.CREATE_USER, description = CREATE_USER_DESCRIPTION)

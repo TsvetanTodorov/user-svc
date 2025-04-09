@@ -23,6 +23,6 @@ public class UserResponse {
 
     private LocalDate dateOfBirth;
 
-    private Role role;
+//    private Role role;
 
 }

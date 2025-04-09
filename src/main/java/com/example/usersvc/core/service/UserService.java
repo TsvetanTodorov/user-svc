@@ -1,7 +1,6 @@
 package com.example.usersvc.core.service;
 
 import com.example.usersvc.db.entity.User;
-import com.example.usersvc.db.enums.Role;
 import com.example.usersvc.db.repository.UserRepository;
 import com.example.usersvc.exception.NoSuchUserException;
 import com.example.usersvc.exception.UserAlreadyExistsException;
@@ -15,11 +14,10 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
-public class UserService {
+public class UserService  {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
 
     @Autowired
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
@@ -90,7 +88,6 @@ public class UserService {
                 .phoneNumber(request.getPhoneNumber())
                 .dateOfBirth(request.getDateOfBirth())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole() != null ? request.getRole() : Role.ROLE_USER)
                 .createdOn(LocalDateTime.now())
                 .updatedOn(LocalDateTime.now())
                 .build();

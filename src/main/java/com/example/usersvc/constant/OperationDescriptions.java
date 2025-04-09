@@ -2,6 +2,9 @@ package com.example.usersvc.constant;
 
 public class OperationDescriptions {
 
+    public static final String USER_MANAGEMENT = "User Management";
+    public static final String USER_MANAGEMENT_DESCRIPTION = "Operations related to users";
+
     public static final String CREATE_USER = "Create a new user";
     public static final String CREATE_USER_DESCRIPTION = "Creates a new user with the provided registration details and returns the created user.";
 

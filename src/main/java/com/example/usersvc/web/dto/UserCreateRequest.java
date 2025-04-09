@@ -1,6 +1,5 @@
 package com.example.usersvc.web.dto;
 
-import com.example.usersvc.db.enums.Role;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -33,7 +32,7 @@ public class UserCreateRequest {
 
     @NotBlank
     private String password;
-
-    private Role role;
+//
+//    private Role role;
 
 }
