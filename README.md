@@ -35,7 +35,7 @@ default users for testing purposes.
 
 
 🌐 API Endpoints
-![img_1.png](img_1.png)
+![img_1.png](images/img_1.png)
 
 
 
@@ -46,7 +46,7 @@ Create User
 
 /api/v1/users
 
-![img_4.png](img_2.png)
+![img_4.png](images/img_2.png)
 
 
 Get User by ID
@@ -55,7 +55,7 @@ Get User by ID
 
 /api/v1/users/123e4567-e89b-12d3-a456-426614174000
 
-![img_3.png](img_3.png)
+![img_3.png](images/img_3.png)
 
 GET Users
 
@@ -64,7 +64,7 @@ GET Users
 /api/v1/users
 
 
-![img_4.png](img_4.png)
+![img_4.png](images/img_4.png)
 
 
 Update User 
@@ -73,7 +73,7 @@ Update User
 
 /api/v1/users/123e4567-e89b-12d3-a456-426614174000
 
-![img_5.png](img_5.png)
+![img_5.png](images/img_5.png)
 
 
 Delete User
@@ -87,4 +87,4 @@ Delete User
 
 API documentation via Swagger
 - **If authentication is needed, can be logged via using one of the users email and password**
-- ![img_6.png](img_6.png)
+- ![img_6.png](images/img_6.png)
