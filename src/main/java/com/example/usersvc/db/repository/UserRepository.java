@@ -17,5 +17,4 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     List<User> findAllByLastNameContaining(String lastName);
 
-    Optional<User> findByEmail(String email);
 }

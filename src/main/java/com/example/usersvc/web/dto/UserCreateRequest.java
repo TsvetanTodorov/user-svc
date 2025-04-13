@@ -30,6 +30,6 @@ public class UserCreateRequest {
     @NotNull
     private LocalDate dateOfBirth;
 
-    @NotBlank
-    private String password;
+//    @NotBlank
+//    private String password;
 }

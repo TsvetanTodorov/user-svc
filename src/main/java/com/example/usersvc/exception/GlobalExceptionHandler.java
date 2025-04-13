@@ -68,4 +68,17 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(errorResponse);
     }
+
+    @ExceptionHandler(PhoneDigitsRequiredException.class)
+    public ResponseEntity<ErrorResponse> handlePhoneDigitsRequiredException(Exception ex) {
+
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .message(ex.getMessage())
+                .time(formatTime(LocalDateTime.now()))
+                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(errorResponse);
+    }
 }
