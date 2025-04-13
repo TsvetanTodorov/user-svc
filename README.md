@@ -18,7 +18,7 @@ This project uses Liquibase for database migrations and Swagger for API document
 
 1. **Clone the repository (Or download its zip file):**
 
--https://github.com/TsvetanTodorov/user-svc.git
+- https://github.com/TsvetanTodorov/user-svc.git
 
 The project itself uses Liquibase for managing database schema changes.
 The initial changelog includes the creation of the user table and inserts 3
